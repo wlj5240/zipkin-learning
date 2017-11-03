@@ -1,0 +1,37 @@
+<web-app xmlns="http://java.sun.com/xml/ns/javaee"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://java.sun.com/xml/ns/javaee
+	http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
+    version="2.5">
+
+  <display-name>Servlet2.5 Application</display-name>
+
+  <filter>
+    <filter-name>TracingFilter</filter-name>
+    <filter-class>brave.servlet.BraveTracingFilter</filter-class>
+  </filter>
+  <filter-mapping>
+    <filter-name>TracingFilter</filter-name>
+    <url-pattern>/*</url-pattern>
+  </filter-mapping>
+
+  <servlet>
+    <servlet-name>BackendServlet</servlet-name>
+    <servlet-class>org.mozhu.zipkin.servlet.BackendServlet</servlet-class>
+    <load-on-startup>1</load-on-startup>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>BackendServlet</servlet-name>
+    <url-pattern>/api</url-pattern>
+  </servlet-mapping>
+
+  <servlet>
+    <servlet-name>FrontendServlet</servlet-name>
+    <servlet-class>org.mozhu.zipkin.servlet.FrontendServlet</servlet-class>
+    <load-on-startup>1</load-on-startup>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>FrontendServlet</servlet-name>
+    <url-pattern>/</url-pattern>
+  </servlet-mapping>
+</web-app>
