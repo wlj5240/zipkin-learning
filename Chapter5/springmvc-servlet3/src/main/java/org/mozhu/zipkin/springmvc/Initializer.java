@@ -15,6 +15,6 @@ public class Initializer extends AbstractAnnotationConfigDispatcherServletInitia
   }
 
   @Override protected Class<?>[] getServletConfigClasses() {
-    return new Class[] {Frontend.class, Backend.class, TracingConfiguration.class};
+    return new Class[] {TracingConfiguration.class};
   }
 }

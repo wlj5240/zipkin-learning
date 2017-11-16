@@ -2,16 +2,12 @@ package org.mozhu.zipkin.springmvc;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.context.annotation.Configuration;
 import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 
 import java.util.Date;
 
-@Configuration
-@EnableWebMvc
 @RestController
 public class Backend {
 

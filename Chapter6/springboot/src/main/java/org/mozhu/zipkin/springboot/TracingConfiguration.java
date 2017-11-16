@@ -1,4 +1,4 @@
-package org.mozhu.zipkin.springmvc;
+package org.mozhu.zipkin.springboot;
 
 import brave.Tracing;
 import brave.context.log4j2.ThreadContextCurrentTraceContext;
@@ -28,7 +28,7 @@ import java.util.List;
 
 @Configuration
 @EnableWebMvc
-@ComponentScan(basePackages = "org.mozhu.zipkin.springmvc")
+@ComponentScan(basePackages = "org.mozhu.zipkin.springboot")
 @Import({TracingClientHttpRequestInterceptor.class, TracingHandlerInterceptor.class})
 public class TracingConfiguration extends WebMvcConfigurerAdapter {
 
@@ -40,7 +40,7 @@ public class TracingConfiguration extends WebMvcConfigurerAdapter {
     return AsyncReporter.create(sender());
   }
 
-  @Bean Tracing tracing(@Value("${zipkin.service:springmvc-servlet3-example}") String serviceName) {
+  @Bean Tracing tracing(@Value("${zipkin.service:springboot-example}") String serviceName) {
     return Tracing.newBuilder()
         .localServiceName(serviceName)
         .propagationFactory(ExtraFieldPropagation.newFactory(B3Propagation.FACTORY, "user-name"))

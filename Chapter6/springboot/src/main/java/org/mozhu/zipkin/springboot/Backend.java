@@ -1,4 +1,4 @@
-package org.mozhu.zipkin.springmvc;
+package org.mozhu.zipkin.springboot;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
