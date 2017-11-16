@@ -1,10 +1,11 @@
-package brave.servlet;
+package org.mozhu.zipkin.filter;
 
 import brave.Tracing;
 import brave.context.log4j2.ThreadContextCurrentTraceContext;
 import brave.http.HttpTracing;
 import brave.propagation.B3Propagation;
 import brave.propagation.ExtraFieldPropagation;
+import brave.servlet.TracingFilter;
 import zipkin2.codec.SpanBytesEncoder;
 import zipkin2.reporter.AsyncReporter;
 import zipkin2.reporter.Sender;
@@ -15,7 +16,7 @@ import java.io.IOException;
 import java.util.concurrent.TimeUnit;
 
 public class BraveTracingFilter implements Filter {
-    TracingFilter tracingFilter;
+    Filter tracingFilter;
 
     @Override
     public void init(FilterConfig filterConfig) throws ServletException {
@@ -33,7 +34,7 @@ public class BraveTracingFilter implements Filter {
 
         HttpTracing httpTracing = HttpTracing.create(tracing);
         filterConfig.getServletContext().setAttribute("TRACING", httpTracing);
-        tracingFilter = new TracingFilter(httpTracing);
+        tracingFilter = TracingFilter.create(httpTracing);
         tracingFilter.init(filterConfig);
     }
 

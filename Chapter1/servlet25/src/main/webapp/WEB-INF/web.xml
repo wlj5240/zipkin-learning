@@ -8,7 +8,7 @@
 
   <filter>
     <filter-name>TracingFilter</filter-name>
-    <filter-class>brave.servlet.BraveTracingFilter</filter-class>
+    <filter-class>org.mozhu.zipkin.filter.BraveTracingFilter</filter-class>
   </filter>
   <filter-mapping>
     <filter-name>TracingFilter</filter-name>

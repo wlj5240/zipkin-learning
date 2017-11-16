@@ -64,19 +64,13 @@ public class TracingConfiguration extends WebMvcConfigurerAdapter {
   @Autowired
   private TracingClientHttpRequestInterceptor clientInterceptor;
 
-//  @Autowired
-//  private RestTemplate restTemplate;
-
-  /** adds tracing to the application-defined rest template */
-  @PostConstruct public void init() {
-    List<ClientHttpRequestInterceptor> interceptors =
-            new ArrayList<>(restTemplate().getInterceptors());
-    interceptors.add(clientInterceptor);
-    restTemplate().setInterceptors(interceptors);
-  }
-
   @Bean RestTemplate restTemplate() {
-        return new RestTemplate();
+    RestTemplate restTemplate = new RestTemplate();
+    List<ClientHttpRequestInterceptor> interceptors =
+      new ArrayList<>(restTemplate.getInterceptors());
+    interceptors.add(clientInterceptor);
+    restTemplate.setInterceptors(interceptors);
+    return restTemplate;
   }
 
   /** adds tracing to the application-defined web controller */
