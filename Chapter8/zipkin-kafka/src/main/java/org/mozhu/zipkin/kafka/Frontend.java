@@ -16,7 +16,7 @@ public class Frontend {
     @RequestMapping("/")
     public String callBackend() {
         LOGGER.info("frontend receive request");
-        return restTemplate.getForObject("http://localhost:9000/api", String.class);
+        return restTemplate.getForObject("http://localhost:9001/api", String.class);
     }
 
 }
